@@ -3,3 +3,6 @@
 ################################################################################
 
 /.vs/Tennis-Refactoring-Kata/v14
+/packages/NUnit.3.4.1
+/Tennis/bin/Debug
+/Tennis/obj/Debug

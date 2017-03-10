@@ -15,20 +15,31 @@ namespace Tennis
 
         public string GetScore()
         {
-            string s;
             if ((p1 < 4 && p2 < 4) && (p1 + p2 < 6))
             {
-                string[] p = { "Love", "Fifteen", "Thirty", "Forty" };
-                s = p[p1];
-                return (p1 == p2) ? s + "-All" : s + "-" + p[p2];
+                return HandleSmallScores();
             }
             else
             {
-                if (p1 == p2)
-                    return "Deuce";
-                s = p1 > p2 ? p1N : p2N;
-                return ((p1 - p2) * (p1 - p2) == 1) ? "Advantage " + s : "Win for " + s;
+                return HandleBigScores();
             }
+        }
+
+        private string HandleBigScores()
+        {
+            string s;
+            if (p1 == p2)
+                return "Deuce";
+            s = p1 > p2 ? p1N : p2N;
+            return ((p1 - p2)*(p1 - p2) == 1) ? "Advantage " + s : "Win for " + s;
+        }
+
+        private string HandleSmallScores()
+        {
+            string s;
+            string[] p = {"Love", "Fifteen", "Thirty", "Forty"};
+            s = p[p1];
+            return (p1 == p2) ? s + "-All" : s + "-" + p[p2];
         }
 
         public void WonPoint(string playerName)
